@@ -15,9 +15,9 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * The report Sessionsduration viewed class.
+ * The report Users sessions duration viewed class.
  *
- * @package     report_sessionsduration
+ * @package     report_usessduration
  * @category    admin
  * @copyright   2021 Lukas Celinak <lukascelinak@gmail.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -30,7 +30,7 @@ defined('MOODLE_INTERNAL') || die();
 /**
  * The report Sessions duration viewed event class.
  *
- * @package    report_sessionsduration
+ * @package    report_usessduration
  * @copyright  2021 Lukas Celinak <lukascelinak@gmail.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -52,7 +52,7 @@ class report_viewed extends \core\event\base {
      * @return string
      */
     public static function get_name() {
-        return get_string('eventreportviewed', 'report_sessionsduration');
+        return get_string('eventreportviewed', 'report_usessduration');
     }
 
     /**
@@ -70,7 +70,7 @@ class report_viewed extends \core\event\base {
      * @return \moodle_url
      */
     public function get_url() {
-        return new \moodle_url('/report/sessionsduration/index.php');
+        return new \moodle_url('/report/usessduration/index.php');
     }
 
     /**

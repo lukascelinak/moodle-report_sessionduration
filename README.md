@@ -1,8 +1,15 @@
 # Sessions duration #
 
-TODO Describe the plugin shortly here.
+Report Users sessions duration listing last users sessions, duration of last session, 
+all logins count, and total duration of all user sessions.
 
-TODO Provide more detailed description here.
+Report Users sessions duration calculating total duration from user logs. 
+Main attribute for calculation is users login event. Maximum session duration is 
+solving issues with end of open session (when user log have difference between 
+events bigger as maxsessduration).
+
+For proper download of big database of users please
+
 
 ## Installing via uploaded ZIP file ##
 

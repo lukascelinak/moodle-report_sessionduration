@@ -27,12 +27,19 @@ defined('MOODLE_INTERNAL') || die();
 
 
 
-$ADMIN->add('reports', new admin_externalpage('reportsessionsduration', get_string('pluginname',
-                        'report_sessionsduration'),
-                "$CFG->wwwroot/report/sessionsduration/index.php",
-                'report/sessionsduration:view'));
+$ADMIN->add('reports', new admin_externalpage('report_usessduration', get_string('pluginname',
+                        'report_usessduration'),
+                "$CFG->wwwroot/report/usessduration/index.php",
+                'report/usessduration:view'));
 
-// No report settings.
-$settings = null;
+$settings->add(new admin_setting_configcheckbox('report_usessduration/includesuspended',
+                                                get_string('includesuspended', 'report_usessduration'),
+                                                get_string('includesuspendeddesc', 'report_usessduration'),
+                                                '0'));
+
+$settings->add(new admin_setting_configduration('report_usessduration/maxtimelimit', 
+        get_string('maxtimelimit', 'report_usessduration'),
+        get_string('maxtimelimitdesc', 'report_usessduration'), 12*3600,3600));
+
 
 

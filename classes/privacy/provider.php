@@ -15,22 +15,22 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * The report Sessions duration.
+ * The report Users sessions duration.
  *
- * @package     report_sessionsduration
+ * @package     report_usessduration
  * @category    admin
  * @copyright   2021 Lukas Celinak <lukascelinak@gmail.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace report_sessionsduration\privacy;
+namespace report_usessduration\privacy;
 
 defined('MOODLE_INTERNAL') || die();
 
 /**
  * The report Sessions duration.
  *
- * @package     report_sessionsduration
+ * @package     report_usessduration
  * @copyright   2021 Lukas Celinak <lukascelinak@gmail.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */

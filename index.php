@@ -15,9 +15,9 @@
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
- * Report for users sessions and session atributes.
+ * The report Users sessions duration.
  *
- * @package     report_sessionsduration
+ * @package     report_usessduration
  * @category    admin
  * @copyright   2021 Lukas Celinak <lukascelinak@gmail.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -28,7 +28,7 @@ require_once($CFG->libdir . '/adminlib.php');
 
 require_login();
 $context = context_system::instance();
-require_capability('report/sessionsduration:view', $context);
+require_capability('report/usessduration:view', $context);
 
 $download = optional_param('download', '', PARAM_ALPHA);
 
@@ -36,20 +36,38 @@ $download = optional_param('download', '', PARAM_ALPHA);
 $page = optional_param('page', 0, PARAM_INT); // Which page to show.
 $pagesize = optional_param('perpage', 25, PARAM_INT); // How many per page.
 
-$url = new moodle_url('/report/sessionsduration/index.php');
+$url = new moodle_url('/report/usessduration/index.php');
 $PAGE->set_url($url);
 $PAGE->set_context($context);
-admin_externalpage_setup('reportsessionsduration', '', null, '', array('pagelayout' => 'report'));
-$PAGE->set_title(get_string('pluginname', 'report_sessionsduration'));
-$PAGE->set_heading(get_string('pluginname', 'report_sessionsduration'));
+admin_externalpage_setup('report_usessduration', '', null, '', array('pagelayout' => 'report'));
+$PAGE->set_title(get_string('pluginname', 'report_usessduration'));
+$PAGE->set_heading(get_string('pluginname', 'report_usessduration'));
 
-$mtable = new \report_sessionsduration\table\sessionsduration_table('reportsessionsduration');
-$mtable->is_downloading($download, time(), 'sessionsdurationexport');
+$mtable = new \report_usessduration\table\usessduration_table('reportusessdurationtable');
+$mtable->is_downloading($download, time(), 'usessdurationexport');
 $mtable->define_baseurl($url);
 if (!$mtable->is_downloading()) {
    echo $OUTPUT->header();
+   echo $OUTPUT->heading(get_string('pluginname', 'report_usessduration'));
 }
+ob_start();
 $mtable->out($pagesize, false);
+$mtablehtml = ob_get_contents();
+ob_end_clean();
+
+if (!$mtable->is_downloading()) {
+    echo html_writer::tag(
+    'p',
+    get_string('userstotal', 'report_usessduration', $mtable->totalrows),
+    [
+        'data-region' => 'reportusessdurationtable-count',
+    ]
+);
+}
+
+if (!$mtable->is_downloading()) {
+    echo $mtablehtml;
+}
 
 if (!$mtable->is_downloading()) {
     echo $OUTPUT->footer();

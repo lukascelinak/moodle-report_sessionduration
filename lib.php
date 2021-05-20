@@ -15,10 +15,10 @@
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
- * Code to be executed after the plugin's database scheme has been installed is defined here.
+ * Report for users sessions and session atributes.
  *
  * @package     report_usessduration
- * @category    upgrade
+ * @category    admin
  * @copyright   2021 Lukas Celinak <lukascelinak@gmail.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -26,9 +26,21 @@
 defined('MOODLE_INTERNAL') || die();
 
 /**
- * Custom code to be run on installing the plugin.
+ * Callback to verify if the given instance of store is supported by this report or not.
+ *
+ * @param string $instance store instance.
+ *
+ * @return bool returns true if the store is supported by the report, false otherwise.
  */
-function xmldb_report_usessduration_install() {
-
-    return true;
+function report_usessduration_supports_logstore($instance) {
+    if ($instance instanceof \logstore_standard\log\store) {
+        return true;
+    }
+    if ($instance instanceof \logstore_database\log\store) {
+        return false;
+    }
+    if ($instance instanceof \logstore_legacy\log\store) {
+        return false;
+    }
+    return false;
 }

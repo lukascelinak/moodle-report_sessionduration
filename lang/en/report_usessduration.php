@@ -17,7 +17,7 @@
 /**
  * Plugin strings are defined here.
  *
- * @package     report_sessionsduration
+ * @package     report_usessduration
  * @category    string
  * @copyright   2021 Lukas Celinak <lukascelinak@gmail.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -25,10 +25,19 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$string['pluginname'] = 'Sessions duration';
-$string['eventreportviewed'] = 'Report Sessions duration viewed';
-$string['successfullogins'] = 'Successful logins';
-$string['starttime'] = 'Start time last session';
-$string['endtime'] = 'End time last session';
+$string['pluginname'] = 'Users sessions duration';
+
+/****************** The report Users sessions duration strings ****************/
 $string['duration'] = 'Duration last session';
+$string['endtime'] = 'End time last session';
+$string['eventreportviewed'] = 'Report Users sessions duration viewed';
+$string['includesuspended'] = 'Include suspended users';
+$string['includesuspendeddesc'] = 'Include suspended users in report';
+$string['maxtimelimit'] = 'Maximal time limit';
+$string['maxtimelimitdesc'] = 'Maximal time limit for session calculation';
+$string['settingsheader'] = 'Users sessions duration settings';
+$string['settingsheaderdesc'] = 'Users sessions duration settings';
+$string['starttime'] = 'Start time last session';
+$string['successfullogins'] = 'Successful logins';
 $string['totalduration'] = 'Total duration all sessions';
+$string['userstotal'] = '{$a} users loaded.';
