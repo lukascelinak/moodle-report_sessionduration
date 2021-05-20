@@ -6,10 +6,9 @@ all logins count, and total duration of all user sessions.
 Report Users sessions duration calculating total duration from user logs. 
 Main attribute for calculation is users login event. Maximum session duration is 
 solving issues with end of open session (when user log have difference between 
-events bigger as maxsessduration).
+events bigger as maxtimelimit).
 
-For proper download of big database of users please
-
+You can set up if you want include suspended users to report.
 
 ## Installing via uploaded ZIP file ##
 
@@ -23,7 +22,7 @@ For proper download of big database of users please
 
 The plugin can be also installed by putting the contents of this directory to
 
-    {your/moodle/dirroot}/report/sessionduration
+    {your/moodle/dirroot}/report/usessduration
 
 Afterwards, log in to your Moodle site as an admin and go to _Site administration >
 Notifications_ to complete the installation.
