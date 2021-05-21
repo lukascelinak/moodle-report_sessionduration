@@ -271,7 +271,7 @@ class usessduration_table extends \table_sql {
     public function get_users($sort, $start, $size) {
         global $DB;
         $sql = "SELECT u.*,TIME_FORMAT(SEC_TO_TIME(u.lastaccess-u.currentlogin),'%H:%i') as  duration,"
-                . "(SELECT COUNT(sl.id) FROM {logstore_standard_log} sl WHERE sl.userid =u.id  AND action LIKE \"loggedin\") as successfullogins "
+                . "(SELECT COUNT(sl.id) FROM {logstore_standard_log} sl WHERE sl.userid =u.id AND realuserid IS NULL AND action LIKE \"loggedin\") as successfullogins "
                 . "FROM {user} u "
                 . "WHERE u.id>2 ";
          $sql .=get_config('report_usessduration', 'includesuspended')?"":"AND u.suspended=:suspended ";
