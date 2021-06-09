@@ -24,8 +24,6 @@
  */
 defined('MOODLE_INTERNAL') || die();
 
-
-
 $ADMIN->add('reports', new admin_externalpage('report_usessduration', get_string('pluginname',
                         'report_usessduration'),
                 "$CFG->wwwroot/report/usessduration/index.php",
